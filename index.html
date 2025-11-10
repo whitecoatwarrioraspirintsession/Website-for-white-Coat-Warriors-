@@ -1,0 +1,1977 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Coat Warrior Quiz Portal</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a56db;
+            --secondary: #0ea5e9;
+            --accent: #10b981;
+            --light: #f8fafc;
+            --dark: #1e3a8a;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --info: #3b82f6;
+            --background: #f0f9ff;
+            --card-bg: #ffffff;
+            --text-primary: #1e3a8a;
+            --text-secondary: #4b5563;
+            --border-radius: 5px;
+            --shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --transition: all 0.2s ease;
+            --compact-spacing: 3px;
+        }
+
+        .dark-mode {
+            --primary: #3b82f6;
+            --secondary: #0ea5e9;
+            --accent: #10b981;
+            --light: #1e293b;
+            --dark: #f1f5f9;
+            --background: #0f172a;
+            --card-bg: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #cbd5e1;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition);
+            position: relative;
+            font-size: 8.1px; /* Increased by 8% */
+            line-height: 1.1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4.86px; /* Increased by 8% */
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 6.48px; /* Increased by 8% */
+            border-radius: var(--border-radius);
+            margin-bottom: 6.48px; /* Increased by 8% */
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
+            animation: pulse 15s infinite linear;
+        }
+
+        @keyframes pulse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 4.32px; /* Increased by 8% */
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo h1 {
+            font-size: 0.972rem; /* Increased by 8% */
+            font-weight: 800;
+            margin-bottom: 1.62px; /* Increased by 8% */
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo p {
+            font-weight: 500;
+            font-size: 0.486rem; /* Increased by 8% */
+            opacity: 0.9;
+        }
+
+        .header-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .header-content h1 {
+            font-size: 0.648rem; /* Increased by 8% */
+            margin-bottom: 4.32px; /* Increased by 8% */
+            color: #ffd700;
+        }
+
+        .header-content p {
+            font-size: 0.486rem; /* Increased by 8% */
+            line-height: 1.1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Hamburger Menu */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 15.12px; /* Increased by 8% */
+            height: 15.12px; /* Increased by 8% */
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            position: absolute;
+            top: 6.48px; /* Increased by 8% */
+            right: 6.48px; /* Increased by 8% */
+            z-index: 10;
+        }
+
+        .menu-toggle span {
+            width: 15.12px; /* Increased by 8% */
+            height: 1.62px; /* Increased by 8% */
+            background: white;
+            border-radius: 1.62px; /* Increased by 8% */
+            transition: var(--transition);
+            position: relative;
+            transform-origin: center;
+        }
+
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(3.24px, 3.24px); /* Increased by 8% */
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(4.32px, -4.32px); /* Increased by 8% */
+        }
+
+        /* Navigation Styles */
+        .nav-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 6.48px; /* Increased by 8% */
+            position: relative;
+        }
+
+        .nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4.86px; /* Increased by 8% */
+        }
+
+        .nav-header h2 {
+            font-size: 0.729rem; /* Increased by 8% */
+        }
+
+        .theme-toggle {
+            background: var(--card-bg);
+            border: none;
+            width: 25.92px; /* Increased by 8% */
+            height: 12.96px; /* Increased by 8% */
+            border-radius: 12.96px; /* Increased by 8% */
+            cursor: pointer;
+            position: relative;
+            display: flex;
+            align-items: center;
+            padding: 1.62px; /* Increased by 8% */
+            box-shadow: var(--shadow);
+        }
+
+        .theme-toggle span {
+            width: 9.72px; /* Increased by 8% */
+            height: 9.72px; /* Increased by 8% */
+            border-radius: 50%;
+            background: var(--primary);
+            position: absolute;
+            transition: var(--transition);
+            left: 1.62px; /* Increased by 8% */
+        }
+
+        .theme-toggle.dark span {
+            left: calc(100% - 11.34px); /* Increased by 8% */
+        }
+
+        .main-nav {
+            display: flex;
+            gap: 2.43px; /* Increased by 8% */
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            display: flex;
+            align-items: center;
+            gap: 2.43px; /* Increased by 8% */
+            padding: 4.05px 4.86px; /* Increased by 8% */
+            background: var(--card-bg);
+            border: none;
+            border-radius: var(--border-radius);
+            color: var(--text-primary);
+            font-weight: 600;
+            font-size: 0.486rem; /* Increased by 8% */
+            cursor: pointer;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Panel Styles */
+        .panel {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 4.86px; /* Increased by 8% */
+            box-shadow: var(--shadow);
+            margin-bottom: 6.48px; /* Increased by 8% */
+            transition: var(--transition);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4.86px; /* Increased by 8% */
+            padding-bottom: 4.05px; /* Increased by 8% */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .panel-title {
+            font-size: 0.648rem; /* Increased by 8% */
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 2.43px; /* Increased by 8% */
+        }
+
+        .panel-actions {
+            display: flex;
+            gap: 2.43px; /* Increased by 8% */
+        }
+
+        /* Button Styles */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2.43px; /* Increased by 8% */
+            padding: 2.43px 4.86px; /* Increased by 8% */
+            border: none;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            font-size: 0.486rem; /* Increased by 8% */
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #0da271;
+            transform: translateY(-1px);
+        }
+
+        .btn-success {
+            background: var(--success);
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #0da271;
+            transform: translateY(-1px);
+        }
+
+        .btn-warning {
+            background: var(--warning);
+            color: white;
+        }
+
+        .btn-warning:hover {
+            background: #d97706;
+            transform: translateY(-1px);
+        }
+
+        .btn-info {
+            background: var(--info);
+            color: white;
+        }
+
+        .btn-info:hover {
+            background: #2563eb;
+            transform: translateY(-1px);
+        }
+
+        /* Card Styles */
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 4.86px; /* Increased by 8% */
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            margin-bottom: 4.86px; /* Increased by 8% */
+        }
+
+        .card:hover {
+            transform: translateY(-1.5px);
+            box-shadow: 0 2.43px 6.48px rgba(0, 0, 0, 0.05); /* Increased by 8% */
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 2.43px; /* Increased by 8% */
+            margin-bottom: 4.05px; /* Increased by 8% */
+            padding-bottom: 4.05px; /* Increased by 8% */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 0.567rem; /* Increased by 8% */
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            gap: 4.86px; /* Increased by 8% */
+        }
+
+        .grid-2 {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .grid-3 {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        /* Footer Styles */
+        footer {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 9.72px 0; /* Increased by 8% */
+            margin-top: auto;
+            font-size: 0.486rem; /* Increased by 8% */
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 6.48px; /* Increased by 8% */
+            margin-top: 6.48px; /* Increased by 8% */
+            /* Removed border-top: 1px solid rgba(255, 255, 255, 0.1); */
+        }
+
+        /* Animation Classes */
+        .fade-in {
+            animation: fadeIn 0.3s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6.48px); } /* Increased by 8% */
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .slide-in {
+            animation: slideIn 0.3s ease forwards;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-6.48px); } /* Increased by 8% */
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* Quiz Cards */
+        .quiz-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .quiz-info {
+            flex-grow: 1;
+            margin-bottom: 4.86px; /* Increased by 8% */
+        }
+
+        .quiz-id {
+            font-weight: 700;
+            font-size: 0.567rem; /* Increased by 8% */
+            color: var(--primary);
+            margin-bottom: 1.62px; /* Increased by 8% */
+        }
+
+        .quiz-subject {
+            font-size: 0.486rem; /* Increased by 8% */
+            color: var(--text-secondary);
+            margin-bottom: 2.43px; /* Increased by 8% */
+        }
+
+        .quiz-chapter {
+            font-size: 0.486rem; /* Increased by 8% */
+            color: var(--text-secondary);
+            margin-bottom: 2.43px; /* Increased by 8% */
+            font-weight: 600;
+        }
+
+        .quiz-details {
+            font-size: 0.405rem; /* Increased by 8% */
+            color: var(--text-secondary);
+            margin-bottom: 4.05px; /* Increased by 8% */
+        }
+
+        .start-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 4.05px 6.48px; /* Increased by 8% */
+            font-weight: 600;
+            font-size: 0.486rem; /* Increased by 8% */
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+
+        .start-btn:hover {
+            background: var(--secondary);
+            transform: translateY(-1px);
+        }
+
+        /* Stats Panel */
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(64.8px, 1fr)); /* Increased by 8% */
+            gap: 4.05px; /* Increased by 8% */
+            margin-bottom: 4.86px; /* Increased by 8% */
+        }
+
+        .stat-item {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 4.05px; /* Increased by 8% */
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        .stat-value {
+            font-size: 0.729rem; /* Increased by 8% */
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .stat-label {
+            font-size: 0.405rem; /* Increased by 8% */
+            color: var(--text-secondary);
+        }
+
+        /* Tab Content */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Welcome Animation - Enhanced */
+        .welcome-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #1e3a8a, #1a56db);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            opacity: 1;
+            transition: opacity 0.8s ease;
+        }
+
+        .welcome-overlay.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .welcome-content {
+            text-align: center;
+            color: white;
+            padding: 12.15px; /* Increased by 8% */
+            max-width: 500px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9.72px; /* Increased by 8% */
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 4.86px 16.2px rgba(0, 0, 0, 0.2); /* Increased by 8% */
+        }
+
+        .welcome-content h2 {
+            font-size: 1.458rem; /* Increased by 8% */
+            margin-bottom: 9.72px; /* Increased by 8% */
+            background: linear-gradient(90deg, #ffd700, #ffed4e, #ffd700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: shimmer 2.5s infinite;
+        }
+
+        .welcome-content p {
+            font-size: 0.648rem; /* Increased by 8% */
+            margin-bottom: 12.15px; /* Increased by 8% */
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+
+        .welcome-logo {
+            font-size: 2.025rem; /* Increased by 8% */
+            margin-bottom: 12.15px; /* Increased by 8% */
+            color: #ffd700;
+            text-shadow: 0 0 12.15px rgba(255, 215, 0, 0.5); /* Increased by 8% */
+            animation: pulseWelcome 1.5s infinite;
+        }
+
+        @keyframes pulseWelcome {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -100% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        /* Password Modal */
+        .password-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .password-modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .password-content {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 9.72px; /* Increased by 8% */
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4.05px 12.15px rgba(0, 0, 0, 0.2); /* Increased by 8% */
+            transform: translateY(-16.2px); /* Increased by 8% */
+            transition: transform 0.3s ease;
+        }
+
+        .password-modal.active .password-content {
+            transform: translateY(0);
+        }
+
+        .password-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6.48px; /* Increased by 8% */
+            padding-bottom: 4.86px; /* Increased by 8% */
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .password-title {
+            font-size: 0.648rem; /* Increased by 8% */
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 0.729rem; /* Increased by 8% */
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .password-form {
+            display: flex;
+            flex-direction: column;
+            gap: 4.86px; /* Increased by 8% */
+        }
+
+        .form-group {
+            margin-bottom: 4.86px; /* Increased by 8% */
+        }
+
+        label {
+            display: block;
+            margin-bottom: 1.62px; /* Increased by 8% */
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 0.486rem; /* Increased by 8% */
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 4.05px 4.86px; /* Increased by 8% */
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 0.486rem; /* Increased by 8% */
+            background: var(--light);
+            color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 1.62px rgba(26, 86, 219, 0.2); /* Increased by 8% */
+        }
+
+        .password-hint {
+            font-size: 0.405rem; /* Increased by 8% */
+            color: var(--text-secondary);
+            margin-top: 2.43px; /* Increased by 8% */
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.486rem; /* Increased by 8% */
+            margin-top: 3.24px; /* Increased by 8% */
+            display: none;
+        }
+
+        /* Password List Styles */
+        .password-list {
+            margin-top: 6.48px; /* Increased by 8% */
+        }
+
+        .password-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.486rem; /* Increased by 8% */
+        }
+
+        .password-table th, .password-table td {
+            border: 1px solid #ddd;
+            padding: 4.05px; /* Increased by 8% */
+            text-align: left;
+        }
+
+        .password-table th {
+            background: var(--primary);
+            color: white;
+        }
+
+        .password-table tr:nth-child(even) {
+            background: var(--light);
+        }
+
+        /* Homepage Content Styles */
+        .homepage-content {
+            line-height: 1.4;
+        }
+
+        .homepage-section {
+            margin-bottom: 6.48px; /* Increased by 8% */
+        }
+
+        .homepage-section h3 {
+            font-size: 0.729rem; /* Increased by 8% */
+            color: var(--primary);
+            margin-bottom: 4.05px; /* Increased by 8% */
+        }
+
+        .homepage-section p {
+            font-size: 0.567rem; /* Increased by 8% */
+            margin-bottom: 4.05px; /* Increased by 8% */
+        }
+
+        .syllabus-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 4.86px 0; /* Increased by 8% */
+            font-size: 0.567rem; /* Increased by 8% */
+        }
+
+        .syllabus-table th, .syllabus-table td {
+            border: 1px solid #ddd;
+            padding: 4.05px; /* Increased by 8% */
+            text-align: left;
+        }
+
+        .syllabus-table th {
+            background: var(--primary);
+            color: white;
+        }
+
+        .services-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .services-list li {
+            font-size: 0.567rem; /* Increased by 8% */
+            margin-bottom: 2.43px; /* Increased by 8% */
+            display: flex;
+            align-items: center;
+            gap: 4.05px; /* Increased by 8% */
+        }
+
+        .services-list li i {
+            color: var(--accent);
+        }
+
+        /* Contact Button */
+        .contact-developer {
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 4.05px 6.48px; /* Increased by 8% */
+            font-weight: 600;
+            font-size: 0.486rem; /* Increased by 8% */
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 6.48px; /* Increased by 8% */
+        }
+
+        .contact-developer:hover {
+            background: #0da271;
+            transform: translateY(-1px);
+        }
+
+        .contact-developer i {
+            margin-right: 2.43px; /* Increased by 8% */
+        }
+
+        /* Developer Info Section */
+        .developer-info {
+            margin-top: 9.72px; /* Increased by 8% */
+            padding-top: 6.48px; /* Increased by 8% */
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* Quiz Access Section */
+        .quiz-access-info {
+            background: linear-gradient(135deg, #f0f9ff, #e0f2fe);
+            border-radius: var(--border-radius);
+            padding: 9.72px; /* Increased by 8% */
+            margin-top: 9.72px; /* Increased by 8% */
+            border-left: 4.05px solid var(--accent); /* Increased by 8% */
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .grid-3 {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .main-nav {
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                right: 0;
+                background: var(--card-bg);
+                border-radius: var(--border-radius);
+                box-shadow: var(--shadow);
+                padding: 4.86px; /* Increased by 8% */
+                z-index: 100;
+                width: 129.6px; /* Increased by 8% */
+                display: none;
+            }
+            
+            .main-nav.active {
+                display: flex;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                justify-content: flex-start;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 4.05px; /* Increased by 8% */
+            }
+            
+            header {
+                padding: 4.86px; /* Increased by 8% */
+            }
+            
+            .logo h1 {
+                font-size: 0.81rem; /* Increased by 8% */
+            }
+            
+            .panel {
+                padding: 4.86px; /* Increased by 8% */
+            }
+            
+            .btn {
+                width: 100%;
+                margin-bottom: 2.43px; /* Increased by 8% */
+            }
+            
+            .panel-actions {
+                flex-direction: column;
+            }
+            
+            .welcome-content {
+                padding: 9.72px; /* Increased by 8% */
+                margin: 6.48px; /* Increased by 8% */
+            }
+            
+            .welcome-content h2 {
+                font-size: 1.053rem; /* Increased by 8% */
+            }
+            
+            .welcome-content p {
+                font-size: 0.567rem; /* Increased by 8% */
+            }
+            
+            .welcome-logo {
+                font-size: 1.62rem; /* Increased by 8% */
+            }
+
+            .form-row {
+                flex-direction: column;
+                gap: 3.24px; /* Increased by 8% */
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 3.24px; /* Increased by 8% */
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 1.62px; /* Increased by 8% */
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--secondary);
+        }
+    </style>
+</head>
+<body>
+    <!-- Welcome Animation -->
+    <div class="welcome-overlay" id="welcome-overlay">
+        <div class="welcome-content scale-in">
+            <div class="welcome-logo">
+                <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h2>Welcome to White Coat Warrior Quiz Portal</h2>
+            <p>Access all your quizzes in one place. Organized by subject for easy navigation.</p>
+            <button class="btn btn-primary" id="start-btn" style="padding: 4.86px 9.72px; font-size: 0.648rem;">
+                Get Started <i class="fas fa-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Password Modal -->
+    <div class="password-modal" id="password-modal">
+        <div class="password-content">
+            <div class="password-header">
+                <h3 class="password-title">Enter Quiz Password</h3>
+                <button class="close-modal" id="close-modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="password-form">
+                <div class="form-group">
+                    <label for="quiz-password">Password</label>
+                    <input type="password" id="quiz-password" placeholder="Enter the Quiz Password">
+                    <div class="password-hint">Enter the exact password for this quiz</div>
+                    <div class="error-message" id="password-error">Incorrect password. Please try again.</div>
+                </div>
+                <button class="btn btn-primary" id="submit-password">
+                    <i class="fas fa-lock-open"></i> Access Quiz
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <header>
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <div class="logo">
+                <h1>White Coat Warrior Quiz Portal</h1>
+                <p>Access All Your Quizzes in One Place</p>
+            </div>
+            
+            <div class="header-content">
+                <h1>Organized by Subject for Easy Navigation</h1>
+                <p>Browse, filter, and access all your quizzes with password protection</p>
+            </div>
+        </header>
+
+        <div class="nav-container">
+            <div class="nav-header">
+                <h2>Navigation</h2>
+                <button class="theme-toggle" id="theme-toggle">
+                    <span></span>
+                </button>
+            </div>
+            
+            <div class="main-nav" id="main-nav">
+                <button class="nav-btn active" data-tab="home">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </button>
+                <button class="nav-btn" data-tab="all">
+                    <i class="fas fa-globe"></i>
+                    <span>All Quiz List</span>
+                </button>
+                <button class="nav-btn" data-tab="chemistry">
+                    <i class="fas fa-flask"></i>
+                    <span>Chemistry Quiz List</span>
+                </button>
+                <button class="nav-btn" data-tab="biology">
+                    <i class="fas fa-dna"></i>
+                    <span>Biology Quiz List</span>
+                </button>
+                <button class="nav-btn" data-tab="physics">
+                    <i class="fas fa-atom"></i>
+                    <span>Physics Quiz List</span>
+                </button>
+                <button class="nav-btn" data-tab="english">
+                    <i class="fas fa-language"></i>
+                    <span>English Quiz List</span>
+                </button>
+                <button class="nav-btn" data-tab="logical">
+                    <i class="fas fa-brain"></i>
+                    <span>Logical Reasoning Quiz List</span>
+                </button>
+                <button class="nav-btn" data-tab="password">
+                    <i class="fas fa-key"></i>
+                    <span>Password Tabs</span>
+                </button>
+                <button class="nav-btn" data-tab="about">
+                    <i class="fas fa-info-circle"></i>
+                    <span>About Us</span>
+                </button>
+                <button class="nav-btn" data-tab="contact">
+                    <i class="fas fa-envelope"></i>
+                    <span>Contact Us</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Stats Panel -->
+        <div class="stats-panel">
+            <div class="stat-item">
+                <div class="stat-value" id="total-quizzes">0</div>
+                <div class="stat-label">Total Quizzes</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="chemistry-quizzes">0</div>
+                <div class="stat-label">Chemistry</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="biology-quizzes">0</div>
+                <div class="stat-label">Biology</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="physics-quizzes">0</div>
+                <div class="stat-label">Physics</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="english-quizzes">0</div>
+                <div class="stat-label">English</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value" id="logical-quizzes">0</div>
+                <div class="stat-label">Logical Reasoning</div>
+            </div>
+        </div>
+
+        <!-- Homepage Tab -->
+        <div class="tab-content active" id="home-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-home"></i> Homepage</h3>
+                </div>
+                
+                <div class="homepage-content">
+                    <div class="homepage-section">
+                        <h3>About White Coat Warriors</h3>
+                        <p>White Coat Warriors is a dedicated group of doctors from Pakistan committed to educating and guiding medical students to successfully pass the MDCAT examination and secure admission into MBBS programs. Our mission is to provide comprehensive educational resources, strategic guidance, and personalized support to help aspiring medical students achieve their dreams of becoming healthcare professionals.</p>
+                        <p>Founded by a team of experienced medical professionals, White Coat Warriors understands the challenges faced by MDCAT aspirants. We provide a comprehensive learning ecosystem that includes detailed study materials, regular assessments, personalized feedback, and a supportive community to ensure our students are well-prepared for the MDCAT examination.</p>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>MDCAT 2025: Your Gateway to Medical Education</h3>
+                        <p>The Medical and Dental College Admission Test (MDCAT) is a standardized entrance examination required for admission to medical and dental colleges in Pakistan. The test evaluates candidates' knowledge in key subjects essential for medical education.</p>
+                        <p>MDCAT 2025 is expected to be more competitive than ever, with thousands of students competing for limited seats in medical colleges. Our comprehensive preparation program is designed to give you the competitive edge needed to secure your place in a reputable medical institution.</p>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>MDCAT 2025 Syllabus Details</h3>
+                        <p>The MDCAT 2025 examination consists of 180 multiple-choice questions distributed across different subjects as follows:</p>
+                        
+                        <table class="syllabus-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Number of Questions</th>
+                                    <th>Weightage</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Biology</td>
+                                    <td>81 MCQs</td>
+                                    <td>45%</td>
+                                </tr>
+                                <tr>
+                                    <td>Chemistry</td>
+                                    <td>45 MCQs</td>
+                                    <td>25%</td>
+                                </tr>
+                                <tr>
+                                    <td>Physics</td>
+                                    <td>36 MCQs</td>
+                                    <td>20%</td>
+                                </tr>
+                                <tr>
+                                    <td>English</td>
+                                    <td>9 MCQs</td>
+                                    <td>5%</td>
+                                </tr>
+                                <tr>
+                                    <td>Logical Reasoning</td>
+                                    <td>9 MCQs</td>
+                                    <td>5%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <p><strong>Important Note:</strong> The MDCAT is a computer-based test with a total duration of 3.5 hours. Negative marking may apply for incorrect answers, so strategic preparation is essential.</p>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>Our Comprehensive Study Materials</h3>
+                        <p>We provide a wide range of educational resources to help you prepare effectively for the MDCAT:</p>
+                        
+                        <ul class="services-list">
+                            <li><i class="fas fa-check-circle"></i> <strong>Weekly Test Series:</strong> Regular assessments to track your progress</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Comprehensive Study Notes:</strong> Detailed subject-wise notes covering the entire syllabus</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Monthly Assessment Tests:</strong> Full-length mock tests to simulate the actual exam environment</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Full Syllabus Mock Tests:</strong> Complete practice tests covering all subjects</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Detailed Subject Notes:</strong> Chapter-wise notes with important concepts and formulas</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>WhatsApp Discussion Groups:</strong> Interactive groups for doubt clearing and peer learning</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>YouTube Educational Lectures:</strong> Video lectures by experienced faculty</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Complete Syllabus Practice Tests:</strong> Topic-wise tests for focused preparation</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>PDF Books and Study Materials:</strong> Downloadable resources for offline study</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>MDCAT Syllabus Question Banks:</strong> Extensive question banks with detailed solutions</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>English Grammar Rules and Tests:</strong> Specialized resources for English preparation</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Logical Reasoning Tricks and Mock Tests:</strong> Strategies and practice for logical reasoning</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Performance Analytics:</strong> Detailed analysis of your strengths and weaknesses</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Personalized Study Plans:</strong> Customized schedules based on your preparation level</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Doubt Clearing Sessions:</strong> Regular sessions with subject experts</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>Our Success Strategy</h3>
+                        <p>At White Coat Warriors, we follow a proven 3-step strategy to ensure your success:</p>
+                        <ol class="services-list">
+                            <li><strong>Conceptual Understanding:</strong> Building strong foundational knowledge in all subjects</li>
+                            <li><strong>Application Practice:</strong> Developing problem-solving skills through extensive practice</li>
+                            <li><strong>Exam Simulation:</strong> Preparing for the actual test environment through timed mock tests</li>
+                        </ol>
+                        <p>Our structured approach has helped hundreds of students achieve their dream of becoming medical professionals. With consistent effort and our expert guidance, you can join the ranks of successful White Coat Warriors.</p>
+                    </div>
+                    
+                    <div class="quiz-access-info">
+                        <h3>How to Receive Quiz Access Codes</h3>
+                        <p>All our premium quizzes are protected with access codes to ensure that only registered students can benefit from our high-quality educational resources. To receive quiz access codes:</p>
+                        
+                        <ol class="services-list">
+                            <li><strong>Contact our team directly</strong> via WhatsApp at <strong>+92370 3843276</strong></li>
+                            <li><strong>Provide your details</strong> including your name, educational background, and MDCAT preparation status</li>
+                            <li><strong>Discuss your requirements</strong> with our educational consultants who will guide you to the most suitable quiz packages</li>
+                            <li><strong>Receive your access codes</strong> after completing the registration process</li>
+                        </ol>
+                        
+                        <p><strong>Why Our Quizzes Are Different:</strong></p>
+                        <ul class="services-list">
+                            <li><i class="fas fa-star"></i> <strong>Comprehensive Coverage:</strong> Each quiz covers the entire MDCAT syllabus with questions designed by medical education experts</li>
+                            <li><i class="fas fa-star"></i> <strong>Quality Assurance:</strong> All questions undergo multiple rounds of review to ensure accuracy and relevance</li>
+                            <li><i class="fas fa-star"></i> <strong>Detailed Explanations:</strong> Every question comes with comprehensive explanations to enhance conceptual understanding</li>
+                            <li><i class="fas fa-star"></i> <strong>Performance Analytics:</strong> Track your progress with detailed performance reports and improvement suggestions</li>
+                            <li><i class="fas fa-star"></i> <strong>Updated Content:</strong> Regular updates to align with the latest MDCAT patterns and syllabus changes</li>
+                            <li><i class="fas fa-star"></i> <strong>Exam Simulation:</strong> Real exam-like interface and timing to prepare you for the actual test environment</li>
+                        </ul>
+                        
+                        <p>Our quizzes are not just assessment tools but comprehensive learning resources that help you identify knowledge gaps, strengthen weak areas, and build confidence for the actual MDCAT examination.</p>
+                        
+                        <p><strong>Contact us today at +92370 3843276 to get started with your MDCAT preparation journey!</strong></p>
+                    </div>
+                    
+                    <div class="developer-info">
+                        <h3>Need More Quizzes or a Custom Website?</h3>
+                        <p>If you need additional quizzes or a professional website developed for your educational institution at a very comfortable price, contact our developer:</p>
+                        <a href="https://wa.me/923247012882" class="contact-developer" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contact Developer on WhatsApp: 03247012882
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- All Quizzes Tab -->
+        <div class="tab-content" id="all-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-globe"></i> All Quizzes</h3>
+                    <div class="panel-actions">
+                        <button class="btn btn-primary" id="refresh-all">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-3" id="all-quizzes-container">
+                    <!-- Quizzes will be populated here by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Chemistry Quizzes Tab -->
+        <div class="tab-content" id="chemistry-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-flask"></i> Chemistry Quizzes</h3>
+                    <div class="panel-actions">
+                        <button class="btn btn-primary" id="refresh-chemistry">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-3" id="chemistry-quizzes-container">
+                    <!-- Chemistry quizzes will be populated here by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Biology Quizzes Tab -->
+        <div class="tab-content" id="biology-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-dna"></i> Biology Quizzes</h3>
+                    <div class="panel-actions">
+                        <button class="btn btn-primary" id="refresh-biology">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-3" id="biology-quizzes-container">
+                    <!-- Biology quizzes will be populated here by JavaScript -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Physics Quizzes Tab -->
+        <div class="tab-content" id="physics-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-atom"></i> Physics Quizzes</h3>
+                    <div class="panel-actions">
+                        <button class="btn btn-primary" id="refresh-physics">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-3" id="physics-quizzes-container">
+                    <!-- Physics quizzes will be populated here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- English Quizzes Tab -->
+        <div class="tab-content" id="english-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-language"></i> English Quizzes</h3>
+                    <div class="panel-actions">
+                        <button class="btn btn-primary" id="refresh-english">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-3" id="english-quizzes-container">
+                    <!-- English quizzes will be populated here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Logical Reasoning Quizzes Tab -->
+        <div class="tab-content" id="logical-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-brain"></i> Logical Reasoning Quizzes</h3>
+                    <div class="panel-actions">
+                        <button class="btn btn-primary" id="refresh-logical">
+                            <i class="fas fa-sync-alt"></i> Refresh
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="grid grid-3" id="logical-quizzes-container">
+                    <!-- Logical Reasoning quizzes will be populated here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Password Tab -->
+        <div class="tab-content" id="password-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-key"></i> Password Tabs</h3>
+                </div>
+                
+                <div class="password-list">
+                    <div class="homepage-section">
+                        <h3>Access Quiz Passwords</h3>
+                        <p>To access the complete list of quiz passwords, please enter the master password below. This feature is available for registered members and administrators only.</p>
+                        <p><strong>Note:</strong> Passwords are case-sensitive and must be entered exactly as provided. Incorrect passwords will not grant access to the protected quizzes.</p>
+                    </div>
+                    
+                    <div id="password-access-form">
+                        <div class="form-group">
+                            <label for="master-password">Enter Master Password</label>
+                            <input type="password" id="master-password" placeholder="Enter master password">
+                            <div class="error-message" id="master-password-error">Incorrect password. Please try again.</div>
+                        </div>
+                        <button class="btn btn-primary" id="submit-master-password">
+                            <i class="fas fa-lock-open"></i> Access Password List
+                        </button>
+                    </div>
+                    
+                    <div id="password-table-container" style="display: none;">
+                        <div class="homepage-section">
+                            <h3>Complete Password List</h3>
+                            <p>Below is the complete list of all quiz passwords organized by subject and chapter. Use these passwords to access the protected quizzes.</p>
+                        </div>
+                        <table class="password-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Chapter Name</th>
+                                    <th>Quiz ID</th>
+                                    <th>Password</th>
+                                </tr>
+                            </thead>
+                            <tbody id="password-table-body">
+                                <!-- Password table will be populated here by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="quiz-access-info">
+                        <h3>How to Get Quiz Access Codes</h3>
+                        <p>All our premium MDCAT preparation quizzes are protected with access codes to maintain the quality and exclusivity of our educational resources. Here's how you can obtain access to these valuable learning tools:</p>
+                        
+                        <ol class="services-list">
+                            <li><strong>Direct Contact:</strong> Reach out to our educational team directly via WhatsApp at <strong>+92370 3843276</strong></li>
+                            <li><strong>Consultation:</strong> Discuss your MDCAT preparation needs with our experienced educational consultants</li>
+                            <li><strong>Registration:</strong> Complete a simple registration process to verify your student status</li>
+                            <li><strong>Access Codes:</strong> Receive personalized access codes for the quiz packages that best suit your preparation requirements</li>
+                        </ol>
+                        
+                        <p><strong>Why Choose Our Quizzes?</strong></p>
+                        <ul class="services-list">
+                            <li><i class="fas fa-check-circle"></i> <strong>Expertly Crafted Content:</strong> All questions are designed by medical professionals and education experts</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Comprehensive Coverage:</strong> Complete alignment with the latest MDCAT syllabus and examination patterns</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Quality Assurance:</strong> Rigorous review process to ensure accuracy and educational value</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Detailed Analytics:</strong> In-depth performance tracking to identify strengths and improvement areas</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Regular Updates:</strong> Continuous content updates to reflect the latest examination trends</li>
+                            <li><i class="fas fa-check-circle"></i> <strong>Exam Simulation:</strong> Realistic test environment to build confidence and time management skills</li>
+                        </ul>
+                        
+                        <p>Our quizzes represent the culmination of years of experience in medical education and have helped hundreds of students achieve outstanding results in the MDCAT examination. Each quiz is designed not just to test your knowledge but to enhance your understanding and application of key concepts.</p>
+                        
+                        <p><strong>Contact us today at +92370 3843276 to begin your journey toward MDCAT success!</strong></p>
+                    </div>
+                    
+                    <div class="developer-info">
+                        <h3>Need Custom Quizzes or a Similar Portal?</h3>
+                        <p>If you're an educational institution or teacher looking to create custom quizzes or a similar interactive portal for your students, our developer can create a tailored solution at a very affordable price.</p>
+                        <a href="https://wa.me/923247012882" class="contact-developer" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contact Developer on WhatsApp: 03247012882
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Us Tab -->
+        <div class="tab-content" id="about-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-info-circle"></i> About Us</h3>
+                </div>
+                
+                <div class="homepage-content">
+                    <div class="homepage-section">
+                        <h3>Our Mission</h3>
+                        <p>White Coat Warriors is dedicated to transforming medical education in Pakistan by providing comprehensive, accessible, and high-quality resources for MDCAT preparation. We believe that every aspiring medical student deserves the opportunity to receive quality education and guidance, regardless of their background or resources.</p>
+                        <p>Our mission extends beyond just helping students pass the MDCAT. We aim to cultivate future healthcare professionals who are not only knowledgeable but also compassionate, ethical, and committed to serving humanity.</p>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>Our Team</h3>
+                        <p>Our team consists of experienced doctors and medical professionals who have successfully navigated the challenging path of medical education and are passionate about helping the next generation of medical students. Each member of our team brings unique expertise and experience to ensure our students receive the best possible guidance.</p>
+                        <p>Our faculty includes:</p>
+                        <ul class="services-list">
+                            <li><i class="fas fa-user-md"></i> <strong>Senior Medical Professionals:</strong> Practicing doctors with years of clinical experience</li>
+                            <li><i class="fas fa-graduation-cap"></i> <strong>Subject Matter Experts:</strong> Specialists in Biology, Chemistry, Physics, and English</li>
+                            <li><i class="fas fa-chalkboard-teacher"></i> <strong>Education Consultants:</strong> Experts in test preparation strategies and study techniques</li>
+                            <li><i class="fas fa-laptop-code"></i> <strong>Technology Specialists:</strong> Professionals who develop our digital learning platforms</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>Our Approach</h3>
+                        <p>We believe in a holistic approach to MDCAT preparation that combines comprehensive study materials, regular assessments, personalized guidance, and a supportive community of fellow aspirants. Our methodology is based on proven educational principles and tailored to the specific requirements of the MDCAT examination.</p>
+                        <p>Key elements of our approach include:</p>
+                        <ul class="services-list">
+                            <li><i class="fas fa-target"></i> <strong>Structured Learning Path:</strong> A step-by-step approach to cover the entire syllabus systematically</li>
+                            <li><i class="fas fa-chart-line"></i> <strong>Progress Tracking:</strong> Regular assessments to monitor improvement and identify areas needing attention</li>
+                            <li><i class="fas fa-users"></i> <strong>Community Support:</strong> Peer learning and mentorship opportunities</li>
+                            <li><i class="fas fa-mobile-alt"></i> <strong>Flexible Learning:</strong> Accessible resources that can be used anytime, anywhere</li>
+                            <li><i class="fas fa-clipboard-check"></i> <strong>Exam-focused Preparation:</strong> Content and practice tests specifically designed for the MDCAT format</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>Our Impact</h3>
+                        <p>Since our inception, White Coat Warriors has helped hundreds of students achieve their dream of entering medical school. Our students have secured admissions in prestigious medical institutions across Pakistan, with many achieving top ranks in the MDCAT examination.</p>
+                        <p>We measure our success not just by the number of students who pass the MDCAT, but by the quality of healthcare professionals we help create - individuals who will go on to make significant contributions to the medical field and society at large.</p>
+                    </div>
+                    
+                    <div class="developer-info">
+                        <h3>Interested in a Similar Educational Platform?</h3>
+                        <p>If you're looking to create a similar educational portal for your institution or organization, our developer can build a customized solution tailored to your specific needs at a very competitive price.</p>
+                        <a href="https://wa.me/923247012882" class="contact-developer" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contact Developer on WhatsApp: 03247012882
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Us Tab -->
+        <div class="tab-content" id="contact-tab">
+            <div class="panel fade-in">
+                <div class="panel-header">
+                    <h3 class="panel-title"><i class="fas fa-envelope"></i> Contact Us</h3>
+                </div>
+                
+                <div class="homepage-content">
+                    <div class="homepage-section">
+                        <h3>Get in Touch</h3>
+                        <p>If you have any questions about our courses, need assistance with your MDCAT preparation, or want to know more about our services, please feel free to contact us through any of the following channels:</p>
+                        
+                        <ul class="services-list">
+                            <li><i class="fas fa-envelope"></i> Email: 
+                                <button class="btn btn-info" id="email-button" style="margin-left: 4.86px; padding: 2.43px 4.86px;">
+                                    <i class="fas fa-envelope"></i> whitecoatwarrior373@gmail.com
+                                </button>
+                            </li>
+                            <li><i class="fab fa-whatsapp" style="color: #25D366;"></i> WhatsApp: 
+                                <a href="https://wa.me/923703843276" class="btn btn-success" style="margin-left: 4.86px; padding: 2.43px 4.86px; background-color: #25D366;" target="_blank">
+                                    <i class="fab fa-whatsapp"></i> +92370 3843276
+                                </a>
+                            </li>
+                            <li><i class="fas fa-phone"></i> Phone: +92370 3843276</li>
+                            <li><i class="fab fa-facebook"></i> Facebook: White Coat Warriors</li>
+                            <li><i class="fab fa-youtube"></i> YouTube: White Coat Warriors</li>
+                            <li><i class="fab fa-instagram"></i> Instagram: @whitecoatwarriors</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>Office Hours</h3>
+                        <p>Our support team is available during the following hours:</p>
+                        <ul class="services-list">
+                            <li><i class="fas fa-clock"></i> Monday to Friday: 9:00 AM - 6:00 PM</li>
+                            <li><i class="fas fa-clock"></i> Saturday: 10:00 AM - 4:00 PM</li>
+                            <li><i class="fas fa-clock"></i> Sunday: Closed</li>
+                        </ul>
+                        <p>For urgent queries outside office hours, please use the WhatsApp number provided above.</p>
+                    </div>
+                    
+                    <div class="homepage-section">
+                        <h3>Frequently Asked Questions</h3>
+                        <p><strong>Q: How do I enroll in your MDCAT preparation program?</strong><br>
+                        A: You can enroll by contacting us through any of the channels mentioned above. Our team will guide you through the registration process.</p>
+                        
+                        <p><strong>Q: Do you offer scholarships or financial assistance?</strong><br>
+                        A: Yes, we offer scholarships to deserving students based on merit and financial need. Please contact us for more information.</p>
+                        
+                        <p><strong>Q: Can I access your materials on mobile devices?</strong><br>
+                        A: Absolutely! Our platform is optimized for all devices including smartphones, tablets, and computers.</p>
+                        
+                        <p><strong>Q: Do you provide one-on-one tutoring?</strong><br>
+                        A: Yes, we offer personalized tutoring sessions for students who need extra help in specific subjects.</p>
+                        
+                        <p><strong>Q: How can I get access to the premium quizzes?</strong><br>
+                        A: You can contact us directly via WhatsApp at +92370 3843276 to discuss quiz access options and receive personalized access codes.</p>
+                    </div>
+                    
+                    <div class="quiz-access-info">
+                        <h3>Premium Quiz Access Information</h3>
+                        <p>All our premium MDCAT preparation quizzes are protected with access codes to ensure the highest quality learning experience for our registered students. Here's what you need to know about accessing our quiz resources:</p>
+                        
+                        <p><strong>Quiz Quality and Features:</strong></p>
+                        <ul class="services-list">
+                            <li><i class="fas fa-check"></i> Comprehensive coverage of the entire MDCAT syllabus</li>
+                            <li><i class="fas fa-check"></i> Questions designed by medical education experts</li>
+                            <li><i class="fas fa-check"></i> Detailed explanations for every question</li>
+                            <li><i class="fas fa-check"></i> Performance analytics and progress tracking</li>
+                            <li><i class="fas fa-check"></i> Real exam simulation with timed tests</li>
+                            <li><i class="fas fa-check"></i> Regular updates based on the latest exam patterns</li>
+                        </ul>
+                        
+                        <p><strong>How to Get Access Codes:</strong></p>
+                        <ol class="services-list">
+                            <li>Contact our educational team via WhatsApp at <strong>+92370 3843276</strong></li>
+                            <li>Provide your educational background and MDCAT preparation status</li>
+                            <li>Discuss your specific learning needs with our consultants</li>
+                            <li>Receive personalized access codes for the most suitable quiz packages</li>
+                            <li>Start practicing with our premium quizzes immediately</li>
+                        </ol>
+                        
+                        <p>Our quizzes have helped hundreds of students achieve outstanding results in the MDCAT examination. Don't miss this opportunity to enhance your preparation with our expertly crafted assessment tools.</p>
+                        
+                        <p><strong>Contact us today at +92370 3843276 to get started!</strong></p>
+                    </div>
+                    
+                    <div class="developer-info">
+                        <h3>Website Development Services</h3>
+                        <p>This educational portal was developed by our technical team. If you need a similar website or custom web application for your educational institution, business, or organization, our developer can create a professional solution at a very comfortable price.</p>
+                        <a href="https://wa.me/923247012882" class="contact-developer" target="_blank">
+                            <i class="fab fa-whatsapp"></i> Contact Developer on WhatsApp: 03247012882
+                        </a>
+                        <p style="margin-top: 4.86px;">Or send an email to: 
+                            <button class="btn btn-info" id="dev-email-button" style="margin-left: 4.86px; padding: 2.43px 4.86px;">
+                                <i class="fas fa-envelope"></i> Developer Email
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 White Coat Warrior Quiz Portal. All rights reserved.</p>
+                <p>Developed with <i class="fas fa-heart" style="color: #ff6b6b;"></i> for aspiring medical students</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Quiz data with all the provided information
+        const quizzes = [
+            // Chemistry Quizzes
+            { id: "WCW-CHE-0011", chapter: "Hydrocarbon", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-CHE-00152718/", questions: 50, time: 50, password: "WCW-NET-314159" },
+            { id: "WCW-CHE-0017", chapter: "Industrial Chemistry", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-CHE-003/", questions: 50, time: 50, password: "WCW-OPS-928374" },
+            { id: "WCW-CHE-007", chapter: "Chemical Bonding", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-CHE-002/", questions: 50, time: 50, password: "WCW-DEV-465823" },
+            { id: "WCW-CHE-007", chapter: "Chemical Bonding", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-CHE-001/", questions: 50, time: 50, password: "WCW-QA-219876" },
+            { id: "WCW-CHE-0013", chapter: "Alcohol & Phenol", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-CHE-00141615/", questions: 50, time: 50, password: "WCW-SYS-654321" },
+            { id: "WCW-CHE-0016", chapter: "Chemistry Chapter", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-PHY-00151718/", questions: 50, time: 50, password: "WCW-DBA-982135" },
+            { id: "WCW-CHE-0015", chapter: "Chemistry Chapter", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-PHY-00162819/", questions: 50, time: 50, password: "WCW-NFS-753421" },
+            { id: "WCW-CHE-009", chapter: "Electrochemistry", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-CHE-0016181816/", questions: 50, time: 50, password: "WCW-CAD-624589" },
+            { id: "WCW-CHE-0014", chapter: "Aldehyde and Ketones", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-PHY-00152718/", questions: 50, time: 50, password: "WCW-API-467923" },
+            { id: "WCW-CHE-0010", chapter: "Chemical Equilibrium", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-CHE-00141617/", questions: 50, time: 50, password: "WCW-GIT-135792" },
+            { id: "WCW-CHE-0018", chapter: "S,P,D & F Block Elements", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/First-two-chemistry-chapter-s-/", questions: 50, time: 50, password: "WCW-SEC-982634" },
+            { id: "WCW-CHE-0012", chapter: "Alkyl Halides", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-CHE-00141618/", questions: 50, time: 50, password: "WCW-FIN-421953" },
+            { id: "WCW-CHE-003", chapter: "Atomic Structure", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-PHY-001fqh/", questions: 50, time: 50, password: "WCW-HR-314526" },
+            { id: "WCW-CHE-005", chapter: "Gas", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-PHY-00152728/", questions: 50, time: 50, password: "WCW-IT-982718" },
+            { id: "WCW-CHE-001", chapter: "Liquid", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-PHY-001427/", questions: 50, time: 50, password: "WCW-SCM-467592" },
+            { id: "WCW-CHE-006", chapter: "Stichiometry", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-PHY-001426/", questions: 50, time: 50, password: "WCW-PRD-184629" },
+            { id: "WCW-CHE-004", chapter: "Solid", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-PHY-001527/", questions: 50, time: 50, password: "WCW-MIS-739824" },
+            { id: "WCW-CHE-002", chapter: "Thermochemistry", subject: "Chemistry", url: "https://whitecoatwarrior.github.io/WCW-CHE-001467/", questions: 50, time: 50, password: "WCW-CRM-982137" },
+            
+            // Biology Quizzes
+            { id: "WCW-BIO-04", chapter: "Inheritance", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-PHY-001hg/", questions: 80, time: 80, password: "WCW-ERP-645893" },
+            { id: "WCW-BIO-0012", chapter: "Reproduction", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-PHY-001051/", questions: 80, time: 80, password: "WCW-CMS-219834" },
+            { id: "WCW-BIO-05", chapter: "Enzyme", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-CHE-0041/", questions: 80, time: 80, password: "WCW-BIZ-463219" },
+            { id: "WCW-BIO-08", chapter: "Acellular Life", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-PHY-09/", questions: 80, time: 80, password: "WCW-LOG-982351" },
+            { id: "WCW-BIO-04", chapter: "Inheritance", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-RES-004-BIO/", questions: 80, time: 80, password: "WCW-TEC-467218" },
+            { id: "WCW-BIO-03", chapter: "Skeleton", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-RES-003-BIO/", questions: 80, time: 80, password: "WCW-ENV-135724" },
+            { id: "WCW-BIO-02", chapter: "Excretion", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-RES-02-BIO/", questions: 80, time: 80, password: "WCW-SUP-753982" },
+            { id: "WCW-BIO-01", chapter: "Respiration", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-RES-001-BIO/", questions: 80, time: 80, password: "WCW-ADM-982736" },
+            { id: "WCW-BIO-06", chapter: "Biomolecules", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-PHY-0015171h/", questions: 80, time: 80, password: "WCW-PAY-421987" },
+            { id: "WCW-BIO-0013", chapter: "Circulation", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-CHE-0015171819/", questions: 80, time: 80, password: "WCW-TAX-624793" },
+            { id: "WCW-BIO-0011", chapter: "Digestion", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-PHY-001517191/", questions: 80, time: 80, password: "WCW-AUD-467592" },
+            { id: "WCW-BIO-0014", chapter: "Bioenergetics", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-PHY-0015281991/", questions: 80, time: 80, password: "WCW-ACC-982634" },
+            { id: "WCW-BIO-0015", chapter: "Cell Structure and Function", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-PHY-001517187/", questions: 80, time: 80, password: "WCW-FIN-314159" },
+            { id: "WCW-BIO-07", chapter: "Evolution", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-PHY-00161719/", questions: 80, time: 80, password: "WCW-MKT-928374" },
+            { id: "WCW-BIO-04", chapter: "Inheritance", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-CHE-001426/", questions: 80, time: 80, password: "WCW-COM-465823" },
+            { id: "WCW-BIO-0016", chapter: "Immune System", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-PHY-0014171/", questions: 80, time: 80, password: "WCW-ITM-219876" },
+            { id: "WCW-BIO-009", chapter: "Biotechnology", subject: "Biology", url: "https://whitecoatwarrior.github.io/WCW-CHE-0014161/", questions: 80, time: 80, password: "WCW-LOG-654321" },
+            
+            // Physics Quizzes
+            { id: "WCW-PHY-0011", chapter: "Rotational and Circular Motion", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-0014171ga/", questions: 50, time: 50, password: "WCW-RET-982135" },
+            { id: "WCW-PHY-03", chapter: "Electromagnetism", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-CHE-00517/", questions: 50, time: 50, password: "WCW-SAL-753421" },
+            { id: "WCW-PHY-04", chapter: "Electromagnetic Induction", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-008/", questions: 50, time: 50, password: "WCW-MAR-624589" },
+            { id: "WCW-PHY-06", chapter: "Electronic", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-006/", questions: 50, time: 50, password: "WCW-CUS-467923" },
+            { id: "WCW-PHY-01", chapter: "Electrostatic", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-005/", questions: 50, time: 50, password: "WCW-SUP-135792" },
+            { id: "WCW-PHY-0016", chapter: "Force and Motion", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-004/", questions: 50, time: 50, password: "WCW-ADM-982718" },
+            { id: "WCW-PHY-0016", chapter: "Fluid Dynamics", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-003/", questions: 50, time: 50, password: "WCW-PUR-467592" },
+            { id: "WCW-PHY-0010", chapter: "Vectors and Equilibrium", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-02/", questions: 50, time: 50, password: "WCW-DIS-184629" },
+            { id: "WCW-PHY-05", chapter: "AC Circuit", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-0010/", questions: 50, time: 50, password: "WCW-MER-739824" },
+            { id: "WCW-PHY-001", chapter: "Work Power and Energy", subject: "Physics", url: "https://whitecoatwarrior.github.io/Test---ID-WCW-PHY-001/", questions: 50, time: 50, password: "WCW-OPS-982137" },
+            { id: "WCW-PHY-04", chapter: "Electromagnetic Induction", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-001/", questions: 50, time: 50, password: "WCW-DEV-645893" },
+            { id: "WCW-PHY-0015", chapter: "Oscillations", subject: "Physics", url: "https://whitecoatwarrior.github.io/shiny-computing-machine/", questions: 50, time: 50, password: "WCW-QA-219834" },
+            { id: "WCW-PHY-02", chapter: "Current Electricity", subject: "Physics", url: "https://whitecoatwarrior.github.io/fictional-octo-enigma/", questions: 50, time: 50, password: "WCW-SYS-463219" },
+            { id: "WCW-PHY-07", chapter: "Dawn of Modern Physics", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-0015171/", questions: 50, time: 50, password: "WCW-DBA-982634" },
+            { id: "WCW-PHY-08-9", chapter: "Nuclear Physics and Atomic Spectra", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-001478966/", questions: 50, time: 50, password: "WCW-NFS-467218" },
+            { id: "WCW-PHY-03", chapter: "Electromagnetism", subject: "Physics", url: "https://whitecoatwarrior.github.io/WCW-PHY-001579/", questions: 50, time: 50, password: "WCW-CAD-135724" },
+            
+            // English Quizzes
+            { id: "WCW-ENG-03", chapter: "Tenses and Voices", subject: "English", url: "https://whitecoatwarrior.github.io/englishtenses-and-vioces/", questions: 50, time: 50, password: "WCW-API-982736" },
+            { id: "WCW-ENG-04", chapter: "Antecedent Agreement Adverb and Preposition", subject: "English", url: "https://whitecoatwarrior.github.io/Pro-ovajjakCakbavak/", questions: 50, time: 50, password: "WCW-GIT-467592" },
+            { id: "WCW-ENG-02", chapter: "Gerund and Infinitive", subject: "English", url: "https://whitecoatwarrior.github.io/animated-octo-computing-machine/", questions: 50, time: 50, password: "WCW-SEC-421953" },
+            { id: "WCW-ENG-06", chapter: "Punctuation Marks & Spellings", subject: "English", url: "https://whitecoatwarrior.github.io/reimagined-giggle/", questions: 50, time: 50, password: "WCW-FIN-314526" },
+            { id: "WCW-ENG-07", chapter: "Narrations & Figurative Language", subject: "English", url: "https://whitecoatwarrior.github.io/silver-happiness/", questions: 50, time: 50, password: "WCW-HR-982718" },
+            { id: "WCW-ENG-01", chapter: "Subjects Verb Agreement", subject: "English", url: "https://whitecoatwarrior.github.io/legendary-octo-tribble/", questions: 50, time: 50, password: "WCW-IT-467923" },
+            { id: "WCW-ENG-05", chapter: "Phrases & Transitional Devices", subject: "English", url: "https://whitecoatwarrior.github.io/automatic-guacamole/", questions: 50, time: 50, password: "WCW-SCM-624589" },
+            
+            // Logical Reasoning Quizzes
+            { id: "WCW-LR-01", chapter: "Critical Thinking", subject: "Logical Reasoning", url: "https://whitecoatwarrior.github.io/glowing-journey/", questions: 50, time: 50, password: "WCW-PRD-135792" },
+            { id: "WCW-LR-02", chapter: "Relation Predict Base", subject: "Logical Reasoning", url: "https://whitecoatwarrior.github.io/curly-umbrella/", questions: 50, time: 50, password: "WCW-MIS-982137" },
+            { id: "WCW-LR-05", chapter: "Cause and Effect, Logical Deduction, Letter and Number Series, Geometric Progression and Letter Series", subject: "Logical Reasoning", url: "https://whitecoatwarrior.github.io/super-duper-couscous/", questions: 50, time: 50, password: "WCW-EXT-000001" },
+            { id: "WCW-LR-04", chapter: "Course of Actions, False Belief True Beliefs, Valid and Wrong Argument Syllogism", subject: "Logical Reasoning", url: "https://whitecoatwarrior.github.io/crispy-goggles/", questions: 50, time: 50, password: "WCW-EXT-000002" },
+            { id: "WCW-LR-03", chapter: "Assumption Based, Conclusion Based, Argument Based, Premises Based", subject: "Logical Reasoning", url: "https://whitecoatwarrior.github.io/cautious-carnival/", questions: 50, time: 50, password: "WCW-EXT-000003" }
+        ];
+
+        // All quizzes are now password protected - no free quizzes
+        // Previously free quizzes now have passwords:
+        // WCW-CHE-0011: WCW-NET-314159
+        // WCW-CHE-0017: WCW-OPS-928374  
+        // WCW-CHE-007: WCW-DEV-465823
+
+        // Categorize quizzes
+        const chemistryQuizzes = quizzes.filter(quiz => quiz.subject === "Chemistry");
+        const biologyQuizzes = quizzes.filter(quiz => quiz.subject === "Biology");
+        const physicsQuizzes = quizzes.filter(quiz => quiz.subject === "Physics");
+        const englishQuizzes = quizzes.filter(quiz => quiz.subject === "English");
+        const logicalQuizzes = quizzes.filter(quiz => quiz.subject === "Logical Reasoning");
+
+        // Global variables for password modal
+        let currentQuiz = null;
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize the application
+            initApp();
+            
+            function initApp() {
+                // Set up event listeners for welcome screen
+                document.getElementById('start-btn').addEventListener('click', () => {
+                    document.getElementById('welcome-overlay').classList.add('hidden');
+                });
+                
+                // Hide welcome animation after delay
+                setTimeout(() => {
+                    document.getElementById('welcome-overlay').classList.add('hidden');
+                }, 5000);
+                
+                // Set up tab navigation
+                setupTabs();
+                
+                // Set up event listeners
+                setupEventListeners();
+                
+                // Load quizzes
+                loadQuizzes();
+                
+                // Update stats
+                updateStats();
+                
+                // Apply animations
+                applyAnimations();
+            }
+            
+            function setupTabs() {
+                const tabButtons = document.querySelectorAll('.nav-btn[data-tab]');
+                const tabContents = document.querySelectorAll('.tab-content');
+                
+                tabButtons.forEach(button => {
+                    button.addEventListener('click', () => {
+                        const tabId = button.getAttribute('data-tab');
+                        
+                        // Update active tab button
+                        tabButtons.forEach(btn => btn.classList.remove('active'));
+                        button.classList.add('active');
+                        
+                        // Show active content
+                        tabContents.forEach(content => content.classList.remove('active'));
+                        document.getElementById(`${tabId}-tab`).classList.add('active');
+                    });
+                });
+            }
+            
+            function setupEventListeners() {
+                // Hamburger menu toggle
+                document.getElementById('menu-toggle').addEventListener('click', toggleMenu);
+                
+                // Theme toggle
+                document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+                
+                // Refresh buttons
+                document.getElementById('refresh-all').addEventListener('click', () => loadQuizzes());
+                document.getElementById('refresh-chemistry').addEventListener('click', () => loadQuizzes());
+                document.getElementById('refresh-biology').addEventListener('click', () => loadQuizzes());
+                document.getElementById('refresh-physics').addEventListener('click', () => loadQuizzes());
+                document.getElementById('refresh-english').addEventListener('click', () => loadQuizzes());
+                document.getElementById('refresh-logical').addEventListener('click', () => loadQuizzes());
+                
+                // Password modal events
+                document.getElementById('close-modal').addEventListener('click', closePasswordModal);
+                document.getElementById('submit-password').addEventListener('click', submitPassword);
+                document.getElementById('quiz-password').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        submitPassword();
+                    }
+                });
+                
+                // Close modal when clicking outside
+                document.getElementById('password-modal').addEventListener('click', (e) => {
+                    if (e.target.id === 'password-modal') {
+                        closePasswordModal();
+                    }
+                });
+                
+                // Master password for password list
+                document.getElementById('submit-master-password').addEventListener('click', submitMasterPassword);
+                document.getElementById('master-password').addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        submitMasterPassword();
+                    }
+                });
+                
+                // Email buttons
+                document.getElementById('email-button').addEventListener('click', () => {
+                    window.location.href = 'mailto:whitecoatwarrior373@gmail.com';
+                });
+                
+                document.getElementById('dev-email-button').addEventListener('click', () => {
+                    window.location.href = 'mailto:hamadahmadbjr971@gmail.com';
+                });
+            }
+            
+            function toggleMenu() {
+                const menuToggle = document.getElementById('menu-toggle');
+                const mainNav = document.getElementById('main-nav');
+                
+                menuToggle.classList.toggle('active');
+                mainNav.classList.toggle('active');
+            }
+            
+            function toggleTheme() {
+                const themeToggle = document.getElementById('theme-toggle');
+                document.body.classList.toggle('dark-mode');
+                themeToggle.classList.toggle('dark');
+                saveToLocalStorage('darkMode', document.body.classList.contains('dark-mode'));
+            }
+            
+            function loadQuizzes() {
+                // Load all quizzes
+                const allContainer = document.getElementById('all-quizzes-container');
+                allContainer.innerHTML = '';
+                
+                quizzes.forEach(quiz => {
+                    const quizCard = createQuizCard(quiz);
+                    allContainer.appendChild(quizCard);
+                });
+                
+                // Load chemistry quizzes
+                const chemistryContainer = document.getElementById('chemistry-quizzes-container');
+                chemistryContainer.innerHTML = '';
+                
+                chemistryQuizzes.forEach(quiz => {
+                    const quizCard = createQuizCard(quiz);
+                    chemistryContainer.appendChild(quizCard);
+                });
+                
+                // Load biology quizzes
+                const biologyContainer = document.getElementById('biology-quizzes-container');
+                biologyContainer.innerHTML = '';
+                
+                biologyQuizzes.forEach(quiz => {
+                    const quizCard = createQuizCard(quiz);
+                    biologyContainer.appendChild(quizCard);
+                });
+                
+                // Load physics quizzes
+                const physicsContainer = document.getElementById('physics-quizzes-container');
+                physicsContainer.innerHTML = '';
+                
+                physicsQuizzes.forEach(quiz => {
+                    const quizCard = createQuizCard(quiz);
+                    physicsContainer.appendChild(quizCard);
+                });
+                
+                // Load english quizzes
+                const englishContainer = document.getElementById('english-quizzes-container');
+                englishContainer.innerHTML = '';
+                
+                englishQuizzes.forEach(quiz => {
+                    const quizCard = createQuizCard(quiz);
+                    englishContainer.appendChild(quizCard);
+                });
+                
+                // Load logical reasoning quizzes
+                const logicalContainer = document.getElementById('logical-quizzes-container');
+                logicalContainer.innerHTML = '';
+                
+                logicalQuizzes.forEach(quiz => {
+                    const quizCard = createQuizCard(quiz);
+                    logicalContainer.appendChild(quizCard);
+                });
+                
+                updateStats();
+            }
+            
+            function createQuizCard(quiz) {
+                const card = document.createElement('div');
+                card.className = 'card quiz-card fade-in';
+                
+                const passwordRequired = quiz.password !== "";
+                
+                card.innerHTML = `
+                    <div class="quiz-info">
+                        <div class="quiz-id">${quiz.id}</div>
+                        <div class="quiz-subject">${quiz.subject}</div>
+                        <div class="quiz-chapter">Chapter: ${quiz.chapter}</div>
+                        <div class="quiz-details">${quiz.questions} MCQs | ${quiz.time} minutes</div>
+                        <div class="quiz-details" style="color: var(--warning);"><i class="fas fa-lock"></i> Password Required</div>
+                    </div>
+                    <button class="start-btn" data-quiz-id="${quiz.id}" data-quiz-url="${quiz.url}">
+                        <i class="fas fa-play"></i> Start Quiz
+                    </button>
+                `;
+                
+                // Add event listener to the start button
+                const startBtn = card.querySelector('.start-btn');
+                startBtn.addEventListener('click', () => {
+                    // All quizzes now require password
+                    openPasswordModal(quiz);
+                });
+                
+                return card;
+            }
+            
+            function openPasswordModal(quiz) {
+                currentQuiz = quiz;
+                document.getElementById('password-modal').classList.add('active');
+                document.getElementById('quiz-password').value = '';
+                document.getElementById('password-error').style.display = 'none';
+                document.getElementById('quiz-password').focus();
+            }
+            
+            function closePasswordModal() {
+                document.getElementById('password-modal').classList.remove('active');
+                currentQuiz = null;
+            }
+            
+            function submitPassword() {
+                const passwordInput = document.getElementById('quiz-password');
+                const enteredPassword = passwordInput.value.trim();
+                const errorElement = document.getElementById('password-error');
+                
+                if (enteredPassword === currentQuiz.password) {
+                    // Password is correct, open the quiz URL
+                    window.open(currentQuiz.url, '_blank');
+                    closePasswordModal();
+                } else {
+                    // Password is incorrect
+                    errorElement.style.display = 'block';
+                    passwordInput.focus();
+                }
+            }
+            
+            function submitMasterPassword() {
+                const passwordInput = document.getElementById('master-password');
+                const enteredPassword = passwordInput.value.trim();
+                const errorElement = document.getElementById('master-password-error');
+                const accessForm = document.getElementById('password-access-form');
+                const tableContainer = document.getElementById('password-table-container');
+                
+                if (enteredPassword === "Dr Hira Usman") {
+                    // Password is correct, show the password list
+                    accessForm.style.display = 'none';
+                    tableContainer.style.display = 'block';
+                    
+                    // Populate the password table
+                    const tableBody = document.getElementById('password-table-body');
+                    tableBody.innerHTML = '';
+                    
+                    // Sort quizzes by subject and chapter
+                    const sortedQuizzes = [...quizzes].sort((a, b) => {
+                        if (a.subject !== b.subject) {
+                            return a.subject.localeCompare(b.subject);
+                        }
+                        return a.chapter.localeCompare(b.chapter);
+                    });
+                    
+                    // Add quizzes to table
+                    sortedQuizzes.forEach(quiz => {
+                        const row = document.createElement('tr');
+                        
+                        row.innerHTML = `
+                            <td>${quiz.subject}</td>
+                            <td>${quiz.chapter}</td>
+                            <td>${quiz.id}</td>
+                            <td>${quiz.password}</td>
+                        `;
+                        
+                        tableBody.appendChild(row);
+                    });
+                } else {
+                    // Password is incorrect
+                    errorElement.style.display = 'block';
+                    passwordInput.focus();
+                }
+            }
+            
+            function updateStats() {
+                document.getElementById('total-quizzes').textContent = quizzes.length;
+                document.getElementById('chemistry-quizzes').textContent = chemistryQuizzes.length;
+                document.getElementById('biology-quizzes').textContent = biologyQuizzes.length;
+                document.getElementById('physics-quizzes').textContent = physicsQuizzes.length;
+                document.getElementById('english-quizzes').textContent = englishQuizzes.length;
+                document.getElementById('logical-quizzes').textContent = logicalQuizzes.length;
+            }
+            
+            function applyAnimations() {
+                const elements = document.querySelectorAll('.panel, .card, .nav-btn');
+                
+                elements.forEach((element, index) => {
+                    setTimeout(() => {
+                        element.classList.add('fade-in');
+                    }, index * 50);
+                });
+            }
+            
+            function saveToLocalStorage(key, value) {
+                try {
+                    localStorage.setItem(key, JSON.stringify(value));
+                } catch (e) {
+                    console.error('Error saving to localStorage:', e);
+                }
+            }
+            
+            function getFromLocalStorage(key) {
+                try {
+                    const value = localStorage.getItem(key);
+                    return value ? JSON.parse(value) : null;
+                } catch (e) {
+                    console.error('Error reading from localStorage:', e);
+                    return null;
+                }
+            }
+            
+            // Load dark mode setting
+            const darkMode = getFromLocalStorage('darkMode');
+            if (darkMode) {
+                document.body.classList.add('dark-mode');
+                document.getElementById('theme-toggle').classList.add('dark');
+            }
+        });
+    </script>
+</body>
+</html>
